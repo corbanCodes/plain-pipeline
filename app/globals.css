@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0a0a10;
+  --color-surface: #12121a;
+  --color-surface-2: #191925;
+  --color-surface-3: #21212f;
+  --color-line: rgba(255, 255, 255, 0.08);
+  --color-line-strong: rgba(255, 255, 255, 0.14);
+  --color-ink: #f2f2f7;
+  --color-ink-dim: #a3a3b5;
+  --color-ink-faint: #6b6b7d;
+  --color-accent: #7c5cff;
+  --color-accent-soft: rgba(124, 92, 255, 0.14);
+  --color-accent-bright: #9d85ff;
+  --color-green: #34d399;
+  --color-green-soft: rgba(52, 211, 153, 0.14);
+  --color-amber: #fbbf24;
+  --color-amber-soft: rgba(251, 191, 36, 0.14);
+  --color-red: #f87171;
+  --color-red-soft: rgba(248, 113, 113, 0.14);
+  --color-blue: #60a5fa;
+  --color-blue-soft: rgba(96, 165, 250, 0.14);
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+/* Subtle glow used on the landing page and auth screens */
+.glow {
+  background:
+    radial-gradient(600px 300px at 20% 0%, rgba(124, 92, 255, 0.18), transparent 70%),
+    radial-gradient(500px 300px at 80% 10%, rgba(96, 165, 250, 0.1), transparent 70%);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.7);
+}
+
+::selection {
+  background: rgba(124, 92, 255, 0.4);
+}
