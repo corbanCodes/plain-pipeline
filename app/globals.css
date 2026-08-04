@@ -1,18 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #0a0a10;
-  --color-surface: #12121a;
-  --color-surface-2: #191925;
-  --color-surface-3: #21212f;
-  --color-line: rgba(255, 255, 255, 0.08);
+  --color-bg: #050508;
+  --color-surface: #0d0d15;
+  --color-surface-2: #15151f;
+  --color-surface-3: #1e1e2c;
+  --color-line: rgba(255, 255, 255, 0.07);
   --color-line-strong: rgba(255, 255, 255, 0.14);
-  --color-ink: #f2f2f7;
-  --color-ink-dim: #a3a3b5;
-  --color-ink-faint: #6b6b7d;
-  --color-accent: #7c5cff;
-  --color-accent-soft: rgba(124, 92, 255, 0.14);
-  --color-accent-bright: #9d85ff;
+  --color-ink: #f5f5fa;
+  --color-ink-dim: #a2a2b8;
+  --color-ink-faint: #666679;
+  --color-accent: #8b5cf6;
+  --color-accent-2: #d946ef;
+  --color-accent-soft: rgba(139, 92, 246, 0.15);
+  --color-accent-bright: #a78bfa;
+  --color-fuchsia: #e879f9;
+  --color-cyan: #22d3ee;
   --color-green: #34d399;
   --color-green-soft: rgba(52, 211, 153, 0.14);
   --color-amber: #fbbf24;
@@ -22,24 +25,188 @@
   --color-blue: #60a5fa;
   --color-blue-soft: rgba(96, 165, 250, 0.14);
   --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), var(--font-geist-sans), sans-serif;
   --font-mono: var(--font-geist-mono), monospace;
 }
 
 html {
   color-scheme: dark;
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--color-bg);
   color: var(--color-ink);
   font-family: var(--font-sans);
+  position: relative;
 }
 
-/* Subtle glow used on the landing page and auth screens */
+/* Fine noise overlay for texture */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Ambient glow washes */
 .glow {
   background:
-    radial-gradient(600px 300px at 20% 0%, rgba(124, 92, 255, 0.18), transparent 70%),
-    radial-gradient(500px 300px at 80% 10%, rgba(96, 165, 250, 0.1), transparent 70%);
+    radial-gradient(900px 500px at 15% -5%, rgba(139, 92, 246, 0.16), transparent 65%),
+    radial-gradient(700px 450px at 85% 5%, rgba(217, 70, 239, 0.1), transparent 65%),
+    radial-gradient(600px 500px at 50% 110%, rgba(34, 211, 238, 0.07), transparent 65%);
+}
+
+/* Glassmorphism panel */
+.glass {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.055),
+    rgba(255, 255, 255, 0.02)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Gradient-border card (hero mockup, CTA) */
+.gradient-border {
+  position: relative;
+  background: rgba(10, 10, 16, 0.85);
+  background-clip: padding-box;
+  border: 1px solid transparent;
+}
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  margin: -1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    140deg,
+    rgba(139, 92, 246, 0.6),
+    rgba(255, 255, 255, 0.1) 30%,
+    rgba(255, 255, 255, 0.06) 60%,
+    rgba(217, 70, 239, 0.5)
+  );
+}
+
+.text-gradient {
+  background: linear-gradient(92deg, #a78bfa 0%, #e879f9 50%, #67e8f9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.btn-gradient {
+  background: linear-gradient(135deg, #8b5cf6, #c026d3);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.12) inset,
+    0 10px 32px -8px rgba(168, 85, 247, 0.55);
+  transition: all 0.2s ease;
+}
+.btn-gradient:hover {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.2) inset,
+    0 14px 40px -8px rgba(168, 85, 247, 0.75);
+  filter: brightness(1.12);
+}
+.btn-gradient:active {
+  transform: scale(0.98);
+}
+
+.card-hover {
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 20px 45px -20px rgba(0, 0, 0, 0.7);
+}
+
+/* Drifting hero orbs */
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(40px, -30px) scale(1.08);
+  }
+  66% {
+    transform: translate(-30px, 25px) scale(0.95);
+  }
+}
+.orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.5;
+  pointer-events: none;
+  animation: drift 18s ease-in-out infinite;
+}
+
+/* Modal entrance */
+@keyframes modal-pop {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.modal-pop {
+  animation: modal-pop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.backdrop-fade {
+  animation: fade-in 0.2s ease;
+}
+
+/* Shimmer sweep for the hero badge */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+.shimmer {
+  background: linear-gradient(
+    110deg,
+    rgba(255, 255, 255, 0.65) 40%,
+    #fff 50%,
+    rgba(255, 255, 255, 0.65) 60%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 3.5s linear infinite;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
@@ -47,5 +214,24 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 ::selection {
-  background: rgba(124, 92, 255, 0.4);
+  background: rgba(139, 92, 246, 0.45);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid transparent;
+  background-clip: padding-box;
 }

@@ -22,7 +22,7 @@ export default async function TasksPage() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-semibold tracking-tight">Tasks</h1>
+        <h1 className="font-display text-3xl font-bold tracking-tight">Tasks</h1>
         <p className="mt-1 text-sm text-ink-dim">
           {open} open task{open === 1 ? "" : "s"} — drag cards between columns to
           update them.

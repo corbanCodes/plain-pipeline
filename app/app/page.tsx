@@ -53,8 +53,8 @@ export default async function DashboardPage() {
     <div>
       <div className="mb-8">
         <p className="text-sm text-ink-faint">{today}</p>
-        <h1 className="mt-1 text-2xl font-semibold tracking-tight">
-          Welcome back, {firstName}
+        <h1 className="mt-1 font-display text-3xl font-bold tracking-tight">
+          Welcome back, <span className="text-gradient">{firstName}</span>
         </h1>
       </div>
 
@@ -167,12 +167,9 @@ function StatCard({
   accent: string;
 }) {
   return (
-    <Link
-      href={href}
-      className="rounded-2xl border border-line bg-surface/60 p-5 transition hover:border-line-strong hover:bg-surface"
-    >
+    <Link href={href} className="card-hover glass rounded-2xl p-5">
       <p className="text-xs font-medium uppercase tracking-wide text-ink-faint">{label}</p>
-      <p className={`mt-2 text-3xl font-semibold tracking-tight ${accent}`}>{value}</p>
+      <p className={`mt-2 font-display text-3xl font-bold tracking-tight ${accent}`}>{value}</p>
       {sub && <p className="mt-1 text-xs text-ink-faint">{sub}</p>}
     </Link>
   );
@@ -190,9 +187,9 @@ function Panel({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-2xl border border-line bg-surface/60 p-5">
+    <div className="glass rounded-2xl p-5">
       <div className="mb-2 flex items-center justify-between">
-        <h2 className="font-semibold text-ink">{title}</h2>
+        <h2 className="font-display font-semibold text-ink">{title}</h2>
         <Link href={href} className="text-xs font-medium text-accent-bright hover:underline">
           {linkLabel} →
         </Link>

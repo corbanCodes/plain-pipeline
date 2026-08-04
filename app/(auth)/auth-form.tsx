@@ -18,13 +18,13 @@ export function AuthForm({
     <div className="glow flex min-h-screen flex-col items-center justify-center px-4">
       <Link href="/" className="mb-8 flex items-center gap-2.5">
         <Logo />
-        <span className="text-lg font-semibold tracking-tight text-ink">
+        <span className="font-display text-lg font-semibold tracking-tight text-ink">
           Plain Pipeline
         </span>
       </Link>
 
-      <div className="w-full max-w-sm rounded-2xl border border-line bg-surface/80 p-8 shadow-2xl shadow-black/40 backdrop-blur">
-        <h1 className="text-xl font-semibold text-ink">
+      <div className="glass w-full max-w-sm rounded-3xl p-8 shadow-2xl shadow-black/50">
+        <h1 className="font-display text-2xl font-semibold tracking-tight text-ink">
           {mode === "signup" ? "Create your account" : "Welcome back"}
         </h1>
         <p className="mt-1 text-sm text-ink-dim">
@@ -99,7 +99,7 @@ export function AuthForm({
 export function Logo({ size = 28 }: { size?: number }) {
   return (
     <span
-      className="flex items-center justify-center rounded-lg bg-accent"
+      className="flex items-center justify-center rounded-xl bg-gradient-to-br from-[#8b5cf6] to-[#c026d3] shadow-[0_4px_16px_-2px_rgba(168,85,247,0.5)]"
       style={{ width: size, height: size }}
     >
       <svg

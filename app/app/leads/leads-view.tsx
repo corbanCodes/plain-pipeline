@@ -47,8 +47,8 @@ export function LeadsView({ leads }: { leads: Lead[] }) {
               onClick={() => setFilter(f.value)}
               className={`rounded-full px-3.5 py-1.5 text-xs font-medium transition ${
                 filter === f.value
-                  ? "bg-accent text-white"
-                  : "border border-line-strong text-ink-dim hover:text-ink"
+                  ? "bg-gradient-to-r from-accent to-accent-2 text-white shadow-[0_4px_14px_-4px_rgba(168,85,247,0.6)]"
+                  : "border border-line-strong bg-white/[0.03] text-ink-dim hover:text-ink"
               }`}
             >
               {f.label}
@@ -63,11 +63,11 @@ export function LeadsView({ leads }: { leads: Lead[] }) {
       {filtered.length === 0 ? (
         <EmptyState onAdd={() => openModal(null)} />
       ) : (
-        <div className="overflow-hidden rounded-2xl border border-line bg-surface/60">
+        <div className="glass overflow-hidden rounded-2xl">
           {filtered.map((lead, i) => (
             <div
               key={lead.id}
-              className={`flex flex-wrap items-center gap-x-4 gap-y-2 px-5 py-4 transition hover:bg-surface-2/60 ${
+              className={`flex flex-wrap items-center gap-x-4 gap-y-2 px-5 py-4 transition hover:bg-white/[0.04] ${
                 i > 0 ? "border-t border-line" : ""
               }`}
             >
@@ -75,7 +75,7 @@ export function LeadsView({ leads }: { leads: Lead[] }) {
                 onClick={() => openModal(lead)}
                 className="flex min-w-0 flex-1 basis-52 items-center gap-3 text-left"
               >
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-surface-3 text-xs font-semibold text-ink-dim">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-accent/35 to-accent-2/25 text-xs font-semibold text-ink shadow-[inset_0_0_0_1px_rgba(255,255,255,0.1)]">
                   {initials(lead.name)}
                 </span>
                 <span className="min-w-0">

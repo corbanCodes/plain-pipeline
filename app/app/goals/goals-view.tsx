@@ -31,7 +31,7 @@ export function GoalsView({ goals }: { goals: Goal[] }) {
           <section key={section.horizon}>
             <div className="mb-4 flex items-end justify-between gap-4">
               <div>
-                <h2 className="font-semibold text-ink">{section.label}</h2>
+                <h2 className="font-display text-lg font-semibold text-ink">{section.label}</h2>
                 <p className="text-xs text-ink-faint">{section.blurb}</p>
               </div>
               <button
@@ -88,10 +88,8 @@ function GoalCard({ goal, onEdit }: { goal: Goal; onEdit: () => void }) {
 
   return (
     <div
-      className={`rounded-2xl border p-5 transition ${
-        achieved
-          ? "border-green/25 bg-green-soft/40"
-          : "border-line bg-surface/60 hover:border-line-strong"
+      className={`card-hover rounded-2xl border p-5 ${
+        achieved ? "border-green/25 bg-green-soft/40" : "glass"
       }`}
     >
       <div className="flex items-start justify-between gap-3">

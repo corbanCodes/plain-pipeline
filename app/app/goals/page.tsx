@@ -21,7 +21,7 @@ export default async function GoalsPage() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-semibold tracking-tight">Goals</h1>
+        <h1 className="font-display text-3xl font-bold tracking-tight">Goals</h1>
         <p className="mt-1 text-sm text-ink-dim">
           {active} in progress · {achieved} achieved
         </p>

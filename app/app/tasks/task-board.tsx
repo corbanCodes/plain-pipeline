@@ -58,9 +58,9 @@ export function TaskBoard({ tasks: serverTasks }: { tasks: Task[] }) {
               }}
               onDragLeave={() => setDragOver(null)}
               onDrop={(e) => onDrop(col.key, e)}
-              className={`flex min-h-72 flex-col rounded-2xl border bg-surface/50 p-3 transition ${
+              className={`flex min-h-72 flex-col rounded-2xl border bg-white/[0.03] p-3 backdrop-blur-md transition ${
                 dragOver === col.key
-                  ? "border-accent bg-accent-soft/40"
+                  ? "border-accent bg-accent-soft/40 shadow-[0_0_30px_-10px_rgba(139,92,246,0.4)]"
                   : "border-line"
               }`}
             >
@@ -98,7 +98,7 @@ export function TaskBoard({ tasks: serverTasks }: { tasks: Task[] }) {
                       setEditing(task);
                       setModalStatus(task.status);
                     }}
-                    className="group cursor-grab rounded-xl border border-line bg-surface-2 p-3.5 transition hover:border-line-strong active:cursor-grabbing"
+                    className="card-hover group cursor-grab rounded-xl border border-line bg-surface-2/90 p-3.5 active:cursor-grabbing"
                   >
                     <div className="flex items-start justify-between gap-2">
                       <p
